@@ -1,0 +1,24 @@
+name: work-flows
+on: push
+
+jobs:
+  testing-with-ubuntu:
+    runs-on: ubuntu-latest
+    steps: 
+        - name: download repo
+          uses: actions/checkout@v2
+
+        - name: install node
+          uses: actions/setup-node@v2
+          with:
+            node-version: '14'
+
+        - name: npm install
+          run: npm install
+
+        - name: run tests
+          run: npm test
+
+        
+        - name: deploy app
+          run: echo "Deploying"
